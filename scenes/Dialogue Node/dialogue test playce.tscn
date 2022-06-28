@@ -1,0 +1,407 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/Dialogue Node/Dialogue Node.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Dialogue Node/dialogue test playce.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/consolab.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/textures/debug_texture.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/default cube with transparent background.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 3 )
+
+[node name="dialogue test playce" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="welcom" parent="." instance=ExtResource( 1 )]
+visibility_target = NodePath("Control")
+dialogue_text_node = NodePath("Control/Panel/Label")
+
+[node name="Control" type="Control" parent="welcom"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DebugTexture" type="Sprite" parent="welcom/Control"]
+position = Vector2( 694, 238 )
+scale = Vector2( 0.413814, 0.413814 )
+texture = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="welcom/Control"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[node name="Label" type="Label" parent="welcom/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 1 )
+text = "Hello! Welcome to the_debug_texture.show"
+autowrap = true
+
+[node name="ominous" parent="welcom" instance=ExtResource( 1 )]
+visibility_target = NodePath("Control")
+dialogue_text_node = NodePath("Control/Panel/Label")
+
+[node name="Control" type="Control" parent="welcom/ominous"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DebugTexture" type="Sprite" parent="welcom/ominous/Control"]
+visible = false
+position = Vector2( 694, 238 )
+scale = Vector2( 0.413814, 0.413814 )
+texture = ExtResource( 4 )
+
+[node name="DefaultCubeWithTransparentBackground" type="Sprite" parent="welcom/ominous/Control"]
+position = Vector2( 219, 263 )
+scale = Vector2( 0.464794, 0.464794 )
+texture = ExtResource( 5 )
+
+[node name="Panel" type="Panel" parent="welcom/ominous/Control"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[node name="Label" type="Label" parent="welcom/ominous/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 1 )
+text = "..."
+autowrap = true
+
+[node name="u cube tho" parent="welcom/ominous" instance=ExtResource( 1 )]
+visibility_target = NodePath("Control")
+dialogue_text_node = NodePath("Control/Panel/Label")
+
+[node name="Control" type="Control" parent="welcom/ominous/u cube tho"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DebugTexture" type="Sprite" parent="welcom/ominous/u cube tho/Control"]
+position = Vector2( 694, 238 )
+scale = Vector2( 0.413814, 0.413814 )
+texture = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="welcom/ominous/u cube tho/Control"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[node name="Label" type="Label" parent="welcom/ominous/u cube tho/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 1 )
+text = "I understand you are the blender default cube, yes?"
+autowrap = true
+
+[node name="confirmation" parent="welcom/ominous/u cube tho" instance=ExtResource( 1 )]
+visibility_target = NodePath("Control")
+dialogue_text_node = NodePath("Control/Panel/Label")
+
+[node name="Control" type="Control" parent="welcom/ominous/u cube tho/confirmation"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DebugTexture" type="Sprite" parent="welcom/ominous/u cube tho/confirmation/Control"]
+visible = false
+position = Vector2( 694, 238 )
+scale = Vector2( 0.413814, 0.413814 )
+texture = ExtResource( 4 )
+
+[node name="DefaultCubeWithTransparentBackground" type="Sprite" parent="welcom/ominous/u cube tho/confirmation/Control"]
+position = Vector2( 219, 263 )
+scale = Vector2( 0.464794, 0.464794 )
+texture = ExtResource( 5 )
+
+[node name="Panel" type="Panel" parent="welcom/ominous/u cube tho/confirmation/Control"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[node name="Label" type="Label" parent="welcom/ominous/u cube tho/confirmation/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 1 )
+text = "...yes"
+autowrap = true
+
+[node name="introduce urself" parent="welcom/ominous/u cube tho/confirmation" instance=ExtResource( 1 )]
+visibility_target = NodePath("Control")
+dialogue_time = 3.0
+dialogue_text_node = NodePath("Control/Panel/Label")
+
+[node name="Control" type="Control" parent="welcom/ominous/u cube tho/confirmation/introduce urself"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DebugTexture" type="Sprite" parent="welcom/ominous/u cube tho/confirmation/introduce urself/Control"]
+position = Vector2( 694, 238 )
+scale = Vector2( 0.413814, 0.413814 )
+texture = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="welcom/ominous/u cube tho/confirmation/introduce urself/Control"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[node name="Label" type="Label" parent="welcom/ominous/u cube tho/confirmation/introduce urself/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 1 )
+text = "...
+Would you like to introduce yourself to the audiance and tell them a little bit about yourself?"
+autowrap = true
+
+[node name="218 confimed kills" parent="welcom/ominous/u cube tho/confirmation/introduce urself" instance=ExtResource( 1 )]
+visibility_target = NodePath("Control")
+dialogue_text_node = NodePath("Control/Panel/Label")
+
+[node name="Control" type="Control" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DebugTexture" type="Sprite" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/Control"]
+visible = false
+position = Vector2( 694, 238 )
+scale = Vector2( 0.413814, 0.413814 )
+texture = ExtResource( 4 )
+
+[node name="DefaultCubeWithTransparentBackground" type="Sprite" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/Control"]
+position = Vector2( 219, 263 )
+scale = Vector2( 0.464794, 0.464794 )
+texture = ExtResource( 5 )
+
+[node name="Panel" type="Panel" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/Control"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[node name="Label" type="Label" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 1 )
+text = "I have over 218 confirmed kills, stole between $11,008,341 and $28,956,511 from 1991 to 2006, and single handedly saved a bear from an orphanage attack."
+autowrap = true
+
+[node name="not cube" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills" instance=ExtResource( 1 )]
+visibility_target = NodePath("Control")
+dialogue_time = 4.0
+dialogue_text_node = NodePath("Control/Panel/Label")
+
+[node name="Control" type="Control" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DebugTexture" type="Sprite" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/Control"]
+modulate = Color( 0.678431, 1, 0.631373, 1 )
+position = Vector2( 694, 238 )
+scale = Vector2( 0.413814, 0.413814 )
+texture = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/Control"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[node name="Label" type="Label" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 1 )
+text = "...                             
+...                              
+you're not the actual default cube, are you?"
+autowrap = true
+
+[node name="nope" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube" instance=ExtResource( 1 )]
+visibility_target = NodePath("Control")
+dialogue_time = 0.2
+dialogue_text_node = NodePath("Control/Panel/Label")
+
+[node name="Control" type="Control" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DebugTexture" type="Sprite" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/Control"]
+visible = false
+position = Vector2( 694, 238 )
+scale = Vector2( 0.413814, 0.413814 )
+texture = ExtResource( 4 )
+
+[node name="DefaultCubeWithTransparentBackground" type="Sprite" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/Control"]
+position = Vector2( 219, 263 )
+scale = Vector2( 0.464794, 0.464794 )
+texture = ExtResource( 5 )
+
+[node name="Panel" type="Panel" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/Control"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[node name="Label" type="Label" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 1 )
+text = "No, I am not."
+autowrap = true
+
+[node name="spy" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope" instance=ExtResource( 1 )]
+visibility_target = NodePath("Control")
+dialogue_text_node = NodePath("Control/Panel/Label")
+
+[node name="Control" type="Control" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DebugTexture" type="Sprite" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/Control"]
+modulate = Color( 0.513726, 1, 0.498039, 1 )
+position = Vector2( 694, 238 )
+scale = Vector2( 0.413814, 0.413814 )
+texture = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/Control"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[node name="Label" type="Label" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 1 )
+text = "...are you a spy?"
+autowrap = true
+
+[node name="assassin" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy" instance=ExtResource( 1 )]
+visibility_target = NodePath("Control")
+dialogue_text_node = NodePath("Control/Panel/Label")
+
+[node name="Control" type="Control" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/assassin"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DebugTexture" type="Sprite" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/assassin/Control"]
+visible = false
+position = Vector2( 694, 238 )
+scale = Vector2( 0.413814, 0.413814 )
+texture = ExtResource( 4 )
+
+[node name="DefaultCubeWithTransparentBackground" type="Sprite" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/assassin/Control"]
+position = Vector2( 219, 263 )
+scale = Vector2( 0.464794, 0.464794 )
+texture = ExtResource( 5 )
+
+[node name="Panel" type="Panel" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/assassin/Control"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[node name="Label" type="Label" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/assassin/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 1 )
+text = "Assassin, actually."
+autowrap = true
+
+[node name="ah" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/assassin" instance=ExtResource( 1 )]
+visibility_target = NodePath("Control")
+dialogue_text_node = NodePath("Control/Panel/Label")
+
+[node name="Control" type="Control" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/assassin/ah"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DebugTexture" type="Sprite" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/assassin/ah/Control"]
+modulate = Color( 0.156863, 0.745098, 0.152941, 1 )
+position = Vector2( 694, 238 )
+scale = Vector2( 0.413814, 0.413814 )
+texture = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/assassin/ah/Control"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[node name="Label" type="Label" parent="welcom/ominous/u cube tho/confirmation/introduce urself/218 confimed kills/not cube/nope/spy/assassin/ah/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 1 )
+text = "oh okay that's why my drink tasted off"
+autowrap = true

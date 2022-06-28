@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "DialogueNode",
+"language": "GDScript",
+"path": "res://scenes/Dialogue Node/Dialogue Node.gd"
+} ]
+_global_script_class_icons={
+"DialogueNode": ""
+}
+
 [application]
 
 config/name="SeasonalGameJam2022"
