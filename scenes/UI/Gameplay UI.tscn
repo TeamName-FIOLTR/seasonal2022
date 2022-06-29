@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/UI/Gameplay UI.gd" type="Script" id=1]
+[ext_resource path="res://scenes/UI/Gameplay UI Theme.tres" type="Theme" id=2]
+
+[node name="Gameplay UI" type="Control" groups=["Player Status Recievers"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+freedom_degrees = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Temp" type="Label" parent="VBoxContainer"]
+margin_right = 180.0
+margin_bottom = 17.0
+theme = ExtResource( 2 )
+text = "Temperature: 50.0 °C"
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Temp"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.75 )
+
+[node name="Batt" type="Label" parent="VBoxContainer"]
+margin_top = 21.0
+margin_right = 180.0
+margin_bottom = 38.0
+theme = ExtResource( 2 )
+text = "Battery: 100.0%"
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Batt"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.75 )
