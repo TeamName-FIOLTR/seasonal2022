@@ -4,21 +4,20 @@
 [ext_resource path="res://assets/textures/debug_texture.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 200, 200 )
+extents = Vector2( 40, 40 )
 
 [node name="Player" type="RigidBody2D"]
 script = ExtResource( 1 )
-thrust = 5000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="DebugTexture" type="Sprite" parent="."]
-scale = Vector2( 0.385, 0.385 )
+scale = Vector2( 0.0763742, 0.0763742 )
 texture = ExtResource( 2 )
 
 [node name="Thruster Position" type="Position2D" parent="."]
-position = Vector2( 203, -197 )
+position = Vector2( 42, -38 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2( 4, 4 )
