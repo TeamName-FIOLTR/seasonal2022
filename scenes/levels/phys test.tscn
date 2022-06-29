@@ -11,6 +11,7 @@ extents = Vector2( 999, 10 )
 
 [node name="phys test" type="Node2D" groups=["Camera Data Recievers"]]
 script = ExtResource( 5 )
+camera_correction_scale = Vector2( 1046.97, 1037.13 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1002, -4094 )
