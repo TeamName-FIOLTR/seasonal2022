@@ -18,7 +18,7 @@ func _ready():
 #	pass
 
 func recieve_3d_camera_position(cam_pos):
-	print("2d cam got pos yeah ", cam_pos)
+#	print("2d cam got pos yeah ", cam_pos)
 	camera_2d.global_position.x = cam_pos.x*1000.0
 	camera_2d.global_position.y = -cam_pos.y*1000.0
 	camera_2d.zoom = Vector2(cam_pos.z, cam_pos.z)*camera_correction_scale/1000.0

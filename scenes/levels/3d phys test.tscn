@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/levels/3d phys test.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="PrismMesh" id=2]
+
+[sub_resource type="ShaderMaterial" id=3]
+
+[node name="3d phys test" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="cube1" type="RigidBody" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="cube1"]
+shape = SubResource( 1 )
+
+[node name="CSGMesh" type="CSGMesh" parent="cube1"]
+transform = Transform( 1, 0.000671342, -0.000375577, -0.000671258, 1, 0.000229932, 0.000375726, -0.000229688, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material = SubResource( 3 )
+
+[node name="cube2" type="RigidBody" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 3, 0, 0 )
+gravity_scale = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="cube2"]
+shape = SubResource( 1 )
+
+[node name="CSGMesh" type="CSGMesh" parent="cube2"]
+mesh = SubResource( 2 )
+material = SubResource( 3 )
+
+[node name="cube3" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3, 0, -3 )
+gravity_scale = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="cube3"]
+shape = SubResource( 1 )
+
+[node name="CSGMesh" type="CSGMesh" parent="cube3"]
+mesh = SubResource( 2 )
+material = SubResource( 3 )
+
+[node name="cube4" type="RigidBody" parent="."]
+transform = Transform( -3.09086e-08, -0.707107, -0.707107, 1, -4.37114e-08, 0, -3.09086e-08, -0.707107, 0.707107, 0, 0, -3 )
+gravity_scale = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="cube4"]
+shape = SubResource( 1 )
+
+[node name="CSGMesh" type="CSGMesh" parent="cube4"]
+mesh = SubResource( 2 )
+material = SubResource( 3 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.755167, -0.360953, 0.547207, 0, 0.834752, 0.550626, -0.655532, -0.415815, 0.630377, 6.63674, 4.23155, 2.41336 )

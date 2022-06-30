@@ -17,9 +17,10 @@ polygon = PoolVector2Array( 94.1951, -1.76103, 92.3682, -2.86889, 92.3453, -2.88
 target_mesh_object = NodePath("desert ground collision 2d yeah2   ")
 
 [node name="desert ground collision 2d yeah2   " parent="StaticBody2D/2D Collision Mesh" instance=ExtResource( 1 )]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, -20000 )
+position = Vector2( -87808, -10656 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
