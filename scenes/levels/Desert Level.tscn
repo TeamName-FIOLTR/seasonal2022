@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://scenes/UI/Gameplay UI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levels/Desert Level.gd" type="Script" id=2]
 [ext_resource path="res://assets/models/desert ground fr tho.glb" type="PackedScene" id=3]
+[ext_resource path="res://scenes/levels/bunker door lol.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/textures/ground054_1k/Ground054_1K_NormalGL.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/textures/ground054_1k/Ground054_1K_Roughness.jpg" type="Texture" id=6]
 [ext_resource path="res://assets/textures/ground054_1k/Ground054_1K_Color.jpg" type="Texture" id=7]
@@ -10,18 +11,122 @@
 [ext_resource path="res://scenes/levels/desert 3d collision mesh.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/textures/debug_texture.png" type="Texture" id=10]
 [ext_resource path="res://scenes/Entites/Player 3D.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/levels/solstice Shipping Service yay.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/shaders/Help Menu.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Gradient" id=47]
+offsets = PoolRealArray( 0, 0.5, 0.795858, 1 )
+colors = PoolColorArray( 0.949219, 0.875293, 0.622925, 1, 0.647059, 0.839216, 0.945098, 1, 0.684, 0.8569, 0.95, 1, 0.84375, 1, 0.985352, 1 )
 
 [sub_resource type="ProceduralSky" id=1]
 ground_bottom_color = Color( 0.839216, 0.917647, 0.980392, 1 )
 ground_horizon_color = Color( 0.647059, 0.839216, 0.945098, 1 )
+sun_latitude = 0.0
+sun_longitude = 33.33
 
 [sub_resource type="Environment" id=2]
 background_mode = 2
 background_sky = SubResource( 1 )
+background_color = Color( 1, 1, 1, 1 )
 fog_enabled = true
 tonemap_mode = 4
 tonemap_exposure = 0.43
 adjustment_enabled = true
+
+[sub_resource type="QuadMesh" id=48]
+size = Vector2( 1, 0.279 )
+
+[sub_resource type="VisualShaderNodeScalarOp" id=49]
+default_input_values = [ 0, 0.0, 1, 0.5 ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=50]
+function = 15
+
+[sub_resource type="VisualShaderNodeColorConstant" id=51]
+constant = Color( 1, 0, 0, 1 )
+
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=52]
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=53]
+constant = 0.388
+
+[sub_resource type="VisualShaderNodeInput" id=54]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeScalarOp" id=55]
+operator = 2
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=56]
+constant = 3.551
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=57]
+function = 0
+
+[sub_resource type="VisualShaderNodeScalarOp" id=58]
+default_input_values = [ 0, 0.0, 1, 1.0 ]
+
+[sub_resource type="VisualShader" id=59]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Color:2
+	vec3 n_out2p0 = vec3(1.000000, 0.000000, 0.000000);
+	float n_out2p1 = 1.000000;
+
+// Scalar:4
+	float n_out4p0 = 0.388000;
+
+// VectorScalarMix:3
+	vec3 n_in3p0 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_out3p0 = mix(n_in3p0, n_out2p0, n_out4p0);
+
+// Output:0
+	ALBEDO = n_out2p0;
+	EMISSION = n_out3p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( 30.0173, 165.304 )
+nodes/fragment/0/position = Vector2( 940, 140 )
+nodes/fragment/2/node = SubResource( 51 )
+nodes/fragment/2/position = Vector2( -20, 260 )
+nodes/fragment/3/node = SubResource( 52 )
+nodes/fragment/3/position = Vector2( 160, 360 )
+nodes/fragment/4/node = SubResource( 53 )
+nodes/fragment/4/position = Vector2( -220, 420 )
+nodes/fragment/5/node = SubResource( 54 )
+nodes/fragment/5/position = Vector2( -200, 180 )
+nodes/fragment/6/node = SubResource( 55 )
+nodes/fragment/6/position = Vector2( 0, 140 )
+nodes/fragment/7/node = SubResource( 56 )
+nodes/fragment/7/position = Vector2( -220, 300 )
+nodes/fragment/8/node = SubResource( 57 )
+nodes/fragment/8/position = Vector2( 160, 220 )
+nodes/fragment/9/node = SubResource( 58 )
+nodes/fragment/9/position = Vector2( 300, 260 )
+nodes/fragment/10/node = SubResource( 49 )
+nodes/fragment/10/position = Vector2( 560, 220 )
+nodes/fragment/11/node = SubResource( 50 )
+nodes/fragment/11/position = Vector2( 720, 200 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 3, 1, 4, 0, 3, 2, 3, 0, 0, 5, 2, 0, 0, 0, 5, 0, 6, 0, 7, 0, 6, 1, 6, 0, 8, 0, 8, 0, 9, 0, 9, 0, 10, 0, 10, 0, 11, 0 )
+
+[sub_resource type="ShaderMaterial" id=60]
+shader = SubResource( 59 )
 
 [sub_resource type="Shader" id=12]
 code = "// NOTE: Shader automatically converted from Godot Engine 3.4.4.stable's SpatialMaterial.
@@ -186,10 +291,227 @@ nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0 )
 [sub_resource type="ShaderMaterial" id=19]
 shader = SubResource( 18 )
 
+[sub_resource type="VisualShaderNodeVectorOp" id=22]
+default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( -0.5, -0.5, 0 ) ]
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=23]
+uniform_name = "Heat_Factor"
+
+[sub_resource type="OpenSimplexNoise" id=36]
+seed = 2
+
+[sub_resource type="NoiseTexture" id=37]
+seamless = true
+bump_strength = 3.3
+noise = SubResource( 36 )
+
+[sub_resource type="VisualShaderNodeTexture" id=38]
+texture = SubResource( 37 )
+
+[sub_resource type="VisualShaderNodeVectorCompose" id=39]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=40]
+operator = 3
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=41]
+constant = 10.103
+
+[sub_resource type="VisualShaderNodeInput" id=42]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeVectorCompose" id=43]
+
+[sub_resource type="VisualShaderNodeVectorOp" id=44]
+default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( -0.5, -0.5, 0 ) ]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=45]
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id=24]
+input_name = "screen_texture"
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=46]
+constant = -0.22
+
+[sub_resource type="VisualShaderNodeTexture" id=25]
+source = 5
+
+[sub_resource type="VisualShaderNodeInput" id=26]
+input_name = "screen_uv"
+
+[sub_resource type="VisualShaderNodeVectorOp" id=27]
+default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( -0.2, 0, 0 ) ]
+
+[sub_resource type="OpenSimplexNoise" id=28]
+
+[sub_resource type="NoiseTexture" id=29]
+seamless = true
+bump_strength = 3.3
+noise = SubResource( 28 )
+
+[sub_resource type="VisualShaderNodeTexture" id=30]
+texture = SubResource( 29 )
+
+[sub_resource type="VisualShaderNodeVectorOp" id=31]
+default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 1, 1, 0 ) ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=32]
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=33]
+constant = 1.0
+
+[sub_resource type="VisualShader" id=34]
+code = "shader_type canvas_item;
+uniform sampler2D tex_frg_6;
+uniform sampler2D tex_frg_12;
+uniform float Heat_Factor;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:4
+	vec3 n_out4p0 = vec3(SCREEN_UV, 0.0);
+
+// Input:16
+	float n_out16p0 = TIME;
+
+// Scalar:20
+	float n_out20p0 = -0.220000;
+
+// ScalarOp:19
+	float n_out19p0 = n_out16p0 * n_out20p0;
+
+// VectorCompose:17
+	float n_in17p0 = 0.00000;
+	float n_in17p2 = 0.00000;
+	vec3 n_out17p0 = vec3(n_in17p0, n_out19p0, n_in17p2);
+
+// VectorOp:18
+	vec3 n_out18p0 = n_out4p0 + n_out17p0;
+
+// Texture:6
+	vec4 tex_frg_6_read = texture(tex_frg_6, n_out18p0.xy);
+	vec3 n_out6p0 = tex_frg_6_read.rgb;
+	float n_out6p1 = tex_frg_6_read.a;
+
+// Texture:12
+	vec4 tex_frg_12_read = texture(tex_frg_12, n_out18p0.xy);
+	vec3 n_out12p0 = tex_frg_12_read.rgb;
+	float n_out12p1 = tex_frg_12_read.a;
+
+// VectorCompose:13
+	float n_in13p2 = 0.00000;
+	vec3 n_out13p0 = vec3(dot(n_out6p0, vec3(0.333333, 0.333333, 0.333333)), dot(n_out12p0, vec3(0.333333, 0.333333, 0.333333)), n_in13p2);
+
+// VectorOp:10
+	vec3 n_in10p1 = vec3(-0.50000, -0.50000, 0.00000);
+	vec3 n_out10p0 = n_out13p0 + n_in10p1;
+
+// VectorOp:7
+	vec3 n_in7p1 = vec3(1.00000, 1.00000, 0.00000);
+	vec3 n_out7p0 = n_out10p0 * n_in7p1;
+
+// ScalarUniform:11
+	float n_out11p0 = Heat_Factor;
+
+// Scalar:15
+	float n_out15p0 = 10.103000;
+
+// ScalarOp:14
+	float n_out14p0 = n_out11p0 / n_out15p0;
+
+// VectorScalarMix:8
+	vec3 n_in8p0 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_out8p0 = mix(n_in8p0, n_out7p0, n_out14p0);
+
+// VectorOp:5
+	vec3 n_out5p0 = n_out4p0 + n_out8p0;
+
+// Input:2
+
+// Texture:3
+	vec3 n_out3p0;
+	float n_out3p1;
+	{
+		vec4 SCREEN_TEXTURE_tex_read = texture(SCREEN_TEXTURE, n_out5p0.xy);
+		n_out3p0 = SCREEN_TEXTURE_tex_read.rgb;
+		n_out3p1 = SCREEN_TEXTURE_tex_read.a;
+	}
+
+// Output:0
+	COLOR.rgb = n_out3p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -745.065, -253.5 )
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource( 24 )
+nodes/fragment/2/position = Vector2( -400, 200 )
+nodes/fragment/3/node = SubResource( 25 )
+nodes/fragment/3/position = Vector2( 120, 140 )
+nodes/fragment/4/node = SubResource( 26 )
+nodes/fragment/4/position = Vector2( -1160, 200 )
+nodes/fragment/5/node = SubResource( 27 )
+nodes/fragment/5/position = Vector2( -160, 80 )
+nodes/fragment/6/node = SubResource( 30 )
+nodes/fragment/6/position = Vector2( -900, -200 )
+nodes/fragment/7/node = SubResource( 31 )
+nodes/fragment/7/position = Vector2( -280, 0 )
+nodes/fragment/8/node = SubResource( 32 )
+nodes/fragment/8/position = Vector2( 28.1848, -32.25 )
+nodes/fragment/9/node = SubResource( 33 )
+nodes/fragment/9/position = Vector2( -300, -180 )
+nodes/fragment/10/node = SubResource( 22 )
+nodes/fragment/10/position = Vector2( -520, -60 )
+nodes/fragment/11/node = SubResource( 23 )
+nodes/fragment/11/position = Vector2( -460, -120 )
+nodes/fragment/12/node = SubResource( 38 )
+nodes/fragment/12/position = Vector2( -880, 0 )
+nodes/fragment/13/node = SubResource( 39 )
+nodes/fragment/13/position = Vector2( -481.815, 77.75 )
+nodes/fragment/14/node = SubResource( 40 )
+nodes/fragment/14/position = Vector2( -60, -160 )
+nodes/fragment/15/node = SubResource( 41 )
+nodes/fragment/15/position = Vector2( -300, -20 )
+nodes/fragment/16/node = SubResource( 42 )
+nodes/fragment/16/position = Vector2( -1400, 20 )
+nodes/fragment/17/node = SubResource( 43 )
+nodes/fragment/17/position = Vector2( -1180, 20 )
+nodes/fragment/18/node = SubResource( 44 )
+nodes/fragment/18/position = Vector2( -1080, -120 )
+nodes/fragment/19/node = SubResource( 45 )
+nodes/fragment/19/position = Vector2( -1300, -100 )
+nodes/fragment/20/node = SubResource( 46 )
+nodes/fragment/20/position = Vector2( -1440, 100 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 3, 2, 3, 0, 0, 0, 4, 0, 5, 0, 5, 0, 3, 0, 7, 0, 8, 1, 8, 0, 5, 1, 10, 0, 7, 0, 6, 0, 13, 0, 12, 0, 13, 1, 13, 0, 10, 0, 15, 0, 14, 1, 14, 0, 8, 2, 16, 0, 19, 0, 20, 0, 19, 1, 19, 0, 17, 1, 17, 0, 18, 1, 4, 0, 18, 0, 18, 0, 6, 0, 18, 0, 12, 0, 11, 0, 14, 0 )
+
+[sub_resource type="ShaderMaterial" id=35]
+shader = SubResource( 34 )
+shader_param/Heat_Factor = 0.0
+
 [node name="Desert Level" type="Spatial" groups=["Player Status Recievers"]]
 script = ExtResource( 2 )
 camera_3d_node = NodePath("Camera")
 camera_follow_point = Vector3( -14.252, -12.782, -9.466 )
+sun_light_node = NodePath("DirectionalLight")
+sun_starting_horizontal_angle = -111.0
+sun_ending_horizontal_angle = -256.0
+sun_starting_height_angle = -10.0
+sun_peak_height_angle = -88.0
+enviroment_thing = NodePath("Camera/WorldEnvironment")
+sky_colors = SubResource( 47 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 19.063, 10.05 )
@@ -207,6 +529,34 @@ cast_to = Vector3( 0, -1000, 0 )
 collision_mask = 7
 collide_with_areas = true
 
+[node name="some of the ui weirdo stuff" type="Position3D" parent="Camera"]
+
+[node name="chevy left" type="Position3D" parent="Camera/some of the ui weirdo stuff"]
+transform = Transform( 0.283773, 0.0973288, 0, -0.0973288, 0.283773, 0, 0, 0, 0.3, -1.7, 0.109, -1.95 )
+
+[node name="CSGMesh" type="CSGMesh" parent="Camera/some of the ui weirdo stuff/chevy left"]
+transform = Transform( 0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, 0, 0, -0.929129 )
+mesh = SubResource( 48 )
+material = SubResource( 60 )
+
+[node name="CSGMesh2" type="CSGMesh" parent="Camera/some of the ui weirdo stuff/chevy left"]
+transform = Transform( 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0.140493, -0.487574, -0.929129 )
+mesh = SubResource( 48 )
+material = SubResource( 60 )
+
+[node name="chevy right" type="Position3D" parent="Camera/some of the ui weirdo stuff"]
+transform = Transform( -0.283773, -0.0973288, -2.62268e-08, -0.0973288, 0.283773, 0, -2.48082e-08, -8.50875e-09, 0.3, 1.554, 0.109, -1.95 )
+
+[node name="CSGMesh" type="CSGMesh" parent="Camera/some of the ui weirdo stuff/chevy right"]
+transform = Transform( 0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, 0, 0, -0.929129 )
+mesh = SubResource( 48 )
+material = SubResource( 60 )
+
+[node name="CSGMesh2" type="CSGMesh" parent="Camera/some of the ui weirdo stuff/chevy right"]
+transform = Transform( 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0.140493, -0.487574, -0.929129 )
+mesh = SubResource( 48 )
+material = SubResource( 60 )
+
 [node name="Gameplay UI" parent="." instance=ExtResource( 1 )]
 
 [node name="desert ground fr tho" parent="." instance=ExtResource( 3 )]
@@ -215,15 +565,16 @@ collide_with_areas = true
 material/0 = SubResource( 13 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.994198, -0.0815185, -0.0701789, 0, -0.652429, 0.75785, -0.107566, -0.753453, -0.648644, -84.6963, 7.15837, 0.91346 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -84.6963, 7.15837, 0.91346 )
 shadow_enabled = true
 shadow_color = Color( 0.0509804, 0.0823529, 0.0784314, 1 )
-directional_shadow_mode = 0
+directional_shadow_mode = 1
 
 [node name="desert 3d collision mesh" parent="." instance=ExtResource( 9 )]
 
 [node name="Drone Cube" type="CSGMesh" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -91.1037, 5.43525, 1.69473 )
+visible = false
 mesh = SubResource( 14 )
 material = SubResource( 21 )
 
@@ -233,13 +584,71 @@ mesh = SubResource( 16 )
 material = SubResource( 19 )
 
 [node name="Player 3D" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -89.4783, 4.83607, 1.41005 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -89.4783, 5.77173, 1.41005 )
 collision_mask = 3
-mass = 1.0
 continuous_cd = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
-thrust = 3.0
+thrust = 7.0
+packages = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 600.0
+autostart = true
+
+[node name="solstice Shipping Service yay" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90.6001, 5.23032, 0.437391 )
+
+[node name="bunker door lol" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.5, 0, 8.74228e-08, 0, 0.5, 0, -8.74228e-08, 0, 0.5, -92.1506, 5.24007, 1.38215 )
+thingy_chance = 0.0
+thingy_chance_with_a_side_of_oh_god_were_burning = 0.0
+
+[node name="Screen Space Shader" type="ColorRect" parent="."]
+material = SubResource( 35 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Position3D" type="Position3D" parent="."]
+
+[node name="bunker door lol2" parent="Position3D" instance=ExtResource( 4 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -28.586, -3.06241, 1.41 )
+patience = 20.0
+
+[node name="bunker door lol3" parent="Position3D" instance=ExtResource( 4 )]
+transform = Transform( -0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, -82.7829, 4.42038, 1.26895 )
+thingy_chance = 0.127
+thingy_chance_with_a_side_of_oh_god_were_burning = 0.0
+
+[node name="bunker door lol" parent="Position3D" instance=ExtResource( 4 )]
+transform = Transform( 0.353553, -0.353553, 0, 0.353553, 0.353553, 0, 0, 0, 0.5, 0.45331, 3.62029, 1.18528 )
+patience = 30.0
+
+[node name="bunker door lol4" parent="Position3D" instance=ExtResource( 4 )]
+transform = Transform( -0.240834, -0.0561731, -0.0366554, -0.0507895, 0.241959, -0.0370964, 0.0438117, -0.0282895, -0.2445, 24.0586, 3.79568, 1.27965 )
+patience = 60.0
+
+[node name="bunker door lol5" parent="Position3D" instance=ExtResource( 4 )]
+transform = Transform( -0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 55.862, 2.1049, 1.4 )
+patience = 20.0
+
+[node name="bunker door lol6" parent="Position3D" instance=ExtResource( 4 )]
+transform = Transform( -0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, -52.9004, -0.527239, 1.05491 )
+patience = 15.0
+
+[node name="bunker door lol7" parent="Position3D" instance=ExtResource( 4 )]
+transform = Transform( 0.482963, -0.12941, 0, 0.12941, 0.482963, 0, 0, 0, 0.5, 83.4909, 1.70855, 1.06109 )
+patience = 30.0
+
+[node name="bunker door lol8" parent="Position3D" instance=ExtResource( 4 )]
+transform = Transform( -2.18557e-08, 0.5, 0, 0.5, 2.18557e-08, 4.37114e-08, 4.37114e-08, 1.91069e-15, -0.5, 97.7087, -0.876355, 1.56065 )
+thingy_chance = 0.1
+thingy_chance_with_a_side_of_oh_god_were_burning = 0.0
+patience = 60.0
+
+[node name="Help Menu" parent="." instance=ExtResource( 13 )]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="desert ground fr tho"]

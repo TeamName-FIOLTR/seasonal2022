@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/UI/Gameplay UI Theme.tres" type="Theme" id=1]
+
+[node name="Help Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.796078 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+theme = ExtResource( 1 )
+text = "Welcome to the Solstice Shipping Service! Your goal is to serve shipments during the summer solstice. To do that you will be piloting a drone to various bunkers.
+
+To pilot the drone, it's best with a controller, use the left and right triggers to control the thrust, and you can use the bumpers to invert the thrust if you get stuck
+If you must use a keyboard, you can use A, W, and D to control the 2 thrusters, and shift aswell as space to invert the thrust in the same way.
+
+During the solstice, it will likely be the hottest it's been this century, so be cautious of your battery and temperature.  The battery becomes greatly inefficiently at high temperatures, effectively making it drain much quicker.  If the drone is too hot for too long, it will do an emergency shutdown.  Shutdowns only last as long as temperatures are critical, but dead batteries are irrecoverable.
+
+To get more shipments, shelter from the heat, and a good place to recharge, just go back into the Solstice Shelter that you will start in.
+
+Be warned: The new door's circuitry has partially melted, so it my work extremely inconsistently.
+
+That is all for today.
+
+PS: there's a non-zero chance that you will quantum tunnel through the ground, but rest assured that we are not legally liable for accidents of a freak quantum accident.
+
+You can always access and exit this page with the Escape key or controller equivilant."
+autowrap = true

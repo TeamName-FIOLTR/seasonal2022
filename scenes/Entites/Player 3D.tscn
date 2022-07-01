@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Entites/Player 3D.gd" type="Script" id=1]
+[ext_resource path="res://scenes/levels/lil drone thingy yeah.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sounds/dronetest 2.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/beep.wav" type="AudioStream" id=4]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.2, 0.2, 0.2 )
+extents = Vector3( 0.2, 0.122074, 0.2 )
 
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 0.4, 0.4, 0.4 )
@@ -35,21 +38,66 @@ modes/cull = 2
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 4 )
 
-[node name="Player 3D" type="RigidBody"]
-transform = Transform( 1, 0, 0, 0, 0.467961, -0.883749, 0, 0.883749, 0.467961, 0, 4.16516, 0 )
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 0.4, 0.4, 0.04 )
+
+[sub_resource type="VisualShaderNodeColorConstant" id=7]
+constant = Color( 0.465523, 0.240603, 0.0261302, 1 )
+
+[sub_resource type="VisualShader" id=8]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Color:2
+	vec3 n_out2p0 = vec3(0.465523, 0.240603, 0.026130);
+	float n_out2p1 = 1.000000;
+
+// Output:0
+	ALBEDO = n_out2p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -165.37, 33.826 )
+nodes/fragment/0/position = Vector2( 400, 160 )
+nodes/fragment/2/node = SubResource( 7 )
+nodes/fragment/2/position = Vector2( 160, 180 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 8 )
+
+[node name="Player 3D" type="RigidBody" groups=["Ambient Data Recievers", "Player"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 2
 collision_mask = 2
-mass = 60.0
 angular_damp = 18.915
 script = ExtResource( 1 )
 left_thruster_node = NodePath("Left Thruster")
 right_thruster_node = NodePath("Right Thruster")
-thrust = 518.918
+left_thruster_animation_node = NodePath("lil drone thingy yeah/Thrusters Left")
+right_thruster_animation_node = NodePath("lil drone thingy yeah/Thrusters Right")
+left_thruster_audio_node = NodePath("Thrusters Left Sound")
+right_thruster_audio_node = NodePath("Thrusters Right Sound")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
+visible = false
 mesh = SubResource( 2 )
 material = SubResource( 3 )
 
@@ -61,3 +109,47 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.2, 0 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.628112, 0.778123, 0, -0.778123, 0.628112, 0, 2.29979, 1.86522 )
+
+[node name="lil drone thingy yeah" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.133292, 0, 0, 0, 0.133292, 0, 0, 0, 0.133292, 0, 0, 0 )
+
+[node name="properller center004" parent="lil drone thingy yeah" index="3"]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 1.06056, 0.782037, 0.996559 )
+
+[node name="Thrusters Left Sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.157512, 0 )
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="Thrusters Right Sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.157512, 0 )
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="Packages" type="Position3D" parent="."]
+
+[node name="Package 1" type="CSGMesh" parent="Packages"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 0.999999, 0, -0.999999, -4.37114e-08, 0, -0.105836, 0 )
+mesh = SubResource( 5 )
+material = SubResource( 6 )
+
+[node name="Package 2" type="CSGMesh" parent="Packages"]
+transform = Transform( 1, 0, 0, 0, -4.37113e-08, 0.999999, 0, -0.999999, -4.37113e-08, 0, -0.159149, 0 )
+mesh = SubResource( 5 )
+material = SubResource( 6 )
+
+[node name="Package 3" type="CSGMesh" parent="Packages"]
+transform = Transform( 1, 0, 0, 0, -4.37113e-08, 0.999999, 0, -0.999999, -4.37113e-08, 0, -0.216799, 0 )
+mesh = SubResource( 5 )
+material = SubResource( 6 )
+
+[node name="Warning Beep" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Overheat Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[connection signal="timeout" from="Overheat Timer" to="." method="_on_Overheat_Timer_timeout"]
+
+[editable path="lil drone thingy yeah"]

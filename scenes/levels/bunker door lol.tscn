@@ -1,0 +1,370 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://assets/models/bunker door lol.glb" type="PackedScene" id=1]
+[ext_resource path="res://scenes/levels/bunker door lol.gd" type="Script" id=2]
+[ext_resource path="res://assets/shaders/bunker door metal.tres" type="Material" id=3]
+[ext_resource path="res://assets/models/door rivets oops.glb" type="PackedScene" id=4]
+[ext_resource path="res://assets/sounds/misc_menu_4.wav" type="AudioStream" id=5]
+
+[sub_resource type="VisualShaderNodeSwitch" id=4]
+
+[sub_resource type="VisualShaderNodeColorConstant" id=5]
+constant = Color( 1, 1, 0, 1 )
+
+[sub_resource type="VisualShaderNodeColorConstant" id=6]
+constant = Color( 0, 0, 0, 1 )
+
+[sub_resource type="VisualShaderNodeInput" id=7]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeDotProduct" id=8]
+default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 1, 1, 0 ) ]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=9]
+operator = 2
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=10]
+constant = 8.1
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=11]
+function = 17
+
+[sub_resource type="VisualShaderNodeCompare" id=12]
+default_input_values = [ 0, 0.0, 1, 0.5, 2, 1e-05 ]
+function = 3
+
+[sub_resource type="VisualShader" id=13]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:2
+	vec3 n_out2p0 = vec3(UV, 0.0);
+
+// DotProduct:5
+	vec3 n_in5p1 = vec3(1.00000, 1.00000, 0.00000);
+	float n_out5p0 = dot(n_out2p0, n_in5p1);
+
+// Scalar:7
+	float n_out7p0 = 8.100000;
+
+// ScalarOp:6
+	float n_out6p0 = n_out5p0 * n_out7p0;
+
+// ScalarFunc:8
+	float n_out8p0 = fract(n_out6p0);
+
+// Compare:9
+	float n_in9p1 = 0.50000;
+	bool n_out9p0 = n_out8p0>=n_in9p1;
+
+// Color:12
+	vec3 n_out12p0 = vec3(0.000000, 0.000000, 0.000000);
+	float n_out12p1 = 1.000000;
+
+// Color:11
+	vec3 n_out11p0 = vec3(1.000000, 1.000000, 0.000000);
+	float n_out11p1 = 1.000000;
+
+// VectorSwitch:10
+	vec3 n_out10p0;
+	if(n_out9p0)
+	{
+		n_out10p0 = n_out12p0;
+	}
+	else
+	{
+		n_out10p0 = n_out11p0;
+	}
+
+// Output:0
+	ALBEDO = n_out10p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( 654, 52.5 )
+nodes/fragment/0/position = Vector2( 1420, 120 )
+nodes/fragment/2/node = SubResource( 7 )
+nodes/fragment/2/position = Vector2( -40, 220 )
+nodes/fragment/5/node = SubResource( 8 )
+nodes/fragment/5/position = Vector2( 180, 260 )
+nodes/fragment/6/node = SubResource( 9 )
+nodes/fragment/6/position = Vector2( 358, 266 )
+nodes/fragment/7/node = SubResource( 10 )
+nodes/fragment/7/position = Vector2( 140, 380 )
+nodes/fragment/8/node = SubResource( 11 )
+nodes/fragment/8/position = Vector2( 525, 317 )
+nodes/fragment/9/node = SubResource( 12 )
+nodes/fragment/9/position = Vector2( 803, 241 )
+nodes/fragment/10/node = SubResource( 4 )
+nodes/fragment/10/position = Vector2( 1022, 289.5 )
+nodes/fragment/11/node = SubResource( 5 )
+nodes/fragment/11/position = Vector2( 720, 400 )
+nodes/fragment/12/node = SubResource( 6 )
+nodes/fragment/12/position = Vector2( 780, 460 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 5, 0, 5, 0, 6, 0, 7, 0, 6, 1, 6, 0, 8, 0, 8, 0, 9, 0, 9, 0, 10, 0, 12, 0, 10, 1, 11, 0, 10, 2, 10, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 13 )
+
+[sub_resource type="BoxShape" id=18]
+extents = Vector3( 1, 0.0971359, 1 )
+
+[sub_resource type="VisualShaderNodeColorConstant" id=15]
+constant = Color( 0, 0, 0, 1 )
+
+[sub_resource type="VisualShader" id=16]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Color:2
+	vec3 n_out2p0 = vec3(0.000000, 0.000000, 0.000000);
+	float n_out2p1 = 1.000000;
+
+// Output:0
+	ALBEDO = n_out2p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -49, 26 )
+nodes/fragment/2/node = SubResource( 15 )
+nodes/fragment/2/position = Vector2( 160, 180 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=17]
+shader = SubResource( 16 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "CLOSE"
+length = 0.45
+step = 0.0166667
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Cube:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.333333 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Cube:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.333333 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Cube:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 160.384, -0.25, 0, 0.25, 0, 0, 0, 0, 0, 0, 6.996, -0.011, 0, 0.011, 0, 0, 0, 0, 0, 0 ),
+"times": PoolRealArray( 0, 0.333333, 0.366667, 0.4 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Cube/funny door launch/CollisionShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "OPEN"
+length = 0.416667
+step = 0.0166667
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Cube:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.166667 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Cube:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.166667 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Cube:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, 0, 0, 0.1, 0.543861, 161.148, 0, 0, 0, 0, 117.126, -0.026, 0.015, 0.032, 0, 161.148, 0, 0, 0, 0, 137.344, -0.026, 0.015, 0.032, 0, 160.384, 0, 0, 0, 0 ),
+"times": PoolRealArray( 0, 0.166667, 0.233333, 0.3, 0.35, 0.4 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Cube/funny door launch/CollisionShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Cube:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Cube:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Cube:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Cube/funny door launch/CollisionShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="BoxShape" id=19]
+
+[sub_resource type="BoxShape" id=20]
+extents = Vector3( 1.24554, 0.839656, 1.26398 )
+
+[node name="bunker door lol" groups=["Ambient Data Recievers"] instance=ExtResource( 1 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+script = ExtResource( 2 )
+start_doing_the_thing = true
+patience = 10.0
+
+[node name="Cube" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.088194, 0 )
+material/0 = ExtResource( 3 )
+material/1 = SubResource( 14 )
+
+[node name="Circle" parent="Cube" index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="Circle002" parent="Cube" index="1"]
+material/0 = ExtResource( 3 )
+
+[node name="funny door launch" type="StaticBody" parent="Cube" index="2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Cube/funny door launch" index="0"]
+transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 1.00014, -0.0856214, 0 )
+shape = SubResource( 18 )
+
+[node name="Plane" parent="." index="1"]
+material/0 = ExtResource( 3 )
+material/1 = SubResource( 17 )
+
+[node name="bunker animations yeah" type="AnimationPlayer" parent="." index="3"]
+playback_speed = 0.55
+anims/CLOSE = SubResource( 1 )
+anims/OPEN = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="door rivets oops" parent="." index="4" instance=ExtResource( 4 )]
+
+[node name="Plane001" parent="door rivets oops" index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="package taker" type="Area" parent="." index="5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="package taker" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 19 )
+
+[node name="main collision" type="StaticBody" parent="." index="6"]
+
+[node name="CollisionShape" type="CollisionShape" parent="main collision" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.745653, 0 )
+shape = SubResource( 20 )
+
+[node name="Timer" type="Timer" parent="." index="7"]
+autostart = true
+
+[node name="Dropoff Sound" type="AudioStreamPlayer3D" parent="." index="8"]
+stream = ExtResource( 5 )
+unit_db = 5.378
+
+[connection signal="animation_finished" from="bunker animations yeah" to="." method="_on_bunker_animations_yeah_animation_finished"]
+[connection signal="body_entered" from="package taker" to="." method="_on_package_taker_body_entered"]
+[connection signal="body_exited" from="package taker" to="." method="_on_package_taker_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="door rivets oops"]

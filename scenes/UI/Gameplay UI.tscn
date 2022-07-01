@@ -14,8 +14,8 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Temp" type="Label" parent="VBoxContainer"]
-margin_right = 180.0
-margin_bottom = 17.0
+margin_right = 320.0
+margin_bottom = 30.0
 theme = ExtResource( 2 )
 text = "Temperature: 50.0 °C"
 
@@ -26,13 +26,26 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.75 )
 
 [node name="Batt" type="Label" parent="VBoxContainer"]
-margin_top = 21.0
-margin_right = 180.0
-margin_bottom = 38.0
+margin_top = 34.0
+margin_right = 320.0
+margin_bottom = 64.0
 theme = ExtResource( 2 )
 text = "Battery: 100.0%"
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/Batt"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.75 )
+
+[node name="Deliv" type="Label" parent="VBoxContainer"]
+margin_top = 68.0
+margin_right = 320.0
+margin_bottom = 98.0
+theme = ExtResource( 2 )
+text = "Shipments Served: 0"
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Deliv"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0

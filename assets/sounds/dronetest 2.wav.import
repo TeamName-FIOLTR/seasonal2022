@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dronetest 2.wav-f441a7208ed89256d2bd1e30ba5927a0.sample"
+
+[deps]
+
+source_file="res://assets/sounds/dronetest 2.wav"
+dest_files=[ "res://.import/dronetest 2.wav-f441a7208ed89256d2bd1e30ba5927a0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
